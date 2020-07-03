@@ -28,6 +28,9 @@
   </div>
   <div class="col-sm-2">
     {{ item.metadata.call_number }}
+    <ng-container *ngIf="item.metadata.second_call_number">
+      <span> - </span>{{ item.metadata.second_call_number }}
+    </ng-container>
   </div>
   <div class="col-sm-4 text-right">
     <ng-container *ngIf="isHoldingMatchUserLibraryPID">

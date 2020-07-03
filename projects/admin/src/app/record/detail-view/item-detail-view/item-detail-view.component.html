@@ -24,12 +24,16 @@
       <!-- CALL NUMBER -->
       <dt class="col-sm-3 offset-sm-2 offset-md-0 label-title" translate>Call number</dt>
       <dd class="col-sm-7 col-md-8 mb-0">
-        <ng-container *ngIf="record.metadata.call_number else no_call_number">
+        <ng-container *ngIf="record.metadata.call_number else no_data">
           {{ record.metadata.call_number }}
         </ng-container>
-        <ng-template #no_call_number>
-          <span class="no-data">({{ 'no data' | translate }})</span>
-        </ng-template>
+      </dd>
+      <!-- SECOND CALL NUMBER -->
+      <dt class="col-sm-3 offset-sm-2 offset-md-0 label-title" translate>Second call number</dt>
+      <dd class="col-sm-7 col-md-8 mb-0">
+        <ng-container *ngIf="record.metadata.second_call_number else no_data">
+          {{ record.metadata.second_call_number }}
+        </ng-container>
       </dd>
       <!-- ITEM TYPE -->
       <dt class="col-sm-3 offset-sm-2 offset-md-0">
@@ -123,7 +127,9 @@
       </div>
     </div>
   </section>
-
   <!-- TRANSACTIONS -->
   <admin-item-transactions [item]="record"></admin-item-transactions>
 </ng-container>
+<ng-template #no_data>
+  <span class="no-data">({{ 'no data' | translate }})</span>
+</ng-template>
